@@ -1,22 +1,23 @@
-const express = require('express');
+import express from 'express';
+import cors from 'cors';
 
-const app = express();
+import routes from './routes';
 
-app.use(express.json());
+class App {
+  constructor() {
+    this.server = express();
+    this.middlewares();
+    this.routes();
+  }
 
-app.get('/', (req, res) => {
-  res.status(200).send({ on: true });
-});
+  middlewares() {
+    this.server.use(cors());
+    this.server.use(express.json());
+  }
 
-app.get('/users', (req, res) => {
-  const users = [
-    { name: 'Josimar', email: 'josimar@gmail.com' },
-  ];
-  res.status(200).json(users);
-});
+  routes() {
+    this.server.use(routes);
+  }
+}
 
-app.post('/users', (req, res) => {
-  res.status(201).json(req.body);
-});
-
-module.exports = app;
+export default new App().server;

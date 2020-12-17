@@ -1,5 +1,5 @@
 TN:
-SF:src/app/controllers/UserController.js
+SF:src/app/controllers/UserController.ts
 FN:1,Object.<anonymous>
 FN:5,UserController
 FN:5,findAll

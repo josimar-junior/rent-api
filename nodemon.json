@@ -1,6 +1,8 @@
 {
+    "watch": ["src"],
+    "ext": "ts",
     "execMap": {
-        "js": "sucrase-node"
+        "ts": "sucrase-node src/server.ts"
     },
     "ignore": [
         "__tests__"

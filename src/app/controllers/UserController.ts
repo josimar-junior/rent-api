@@ -1,14 +1,16 @@
-/* eslint-disable class-methods-use-this */
+import { Request, Response } from 'express';
+import { getRepository } from 'typeorm';
+import User from '../entity/User';
+
 class UserController {
-  findAll(req, res) {
-    const users = [
-      { name: 'Josimar', email: 'josimar@gmail.com' },
-    ];
+  async findAll(req: Request, res: Response): Promise<User[]> {
+    const users = await getRepository(User).find();
     return res.status(200).json(users);
   }
 
-  save(req, res) {
-    return res.status(201).json(req.body);
+  async save(req: Request, res: Response): Promise<User> {
+    const savedUser = await getRepository(User).save(req.body);
+    return res.status(201).json(savedUser);
   }
 }
 

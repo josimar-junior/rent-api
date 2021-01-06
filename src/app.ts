@@ -3,6 +3,10 @@ import cors from 'cors';
 
 import routes from './routes';
 
+import { createConnection } from 'typeorm';
+
+import "reflect-metadata";
+
 class App {
   public server: express.Application;
 
@@ -10,6 +14,7 @@ class App {
     this.server = express();
     this.middlewares();
     this.routes();
+    createConnection();
   }
 
   private middlewares(): void {

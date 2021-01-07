@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 import express from 'express';
 import cors from 'cors';
 
@@ -5,7 +7,7 @@ import routes from './routes';
 
 import { createConnection } from 'typeorm';
 
-import "reflect-metadata";
+import './app/shared/container';
 
 class App {
   public server: express.Application;
@@ -14,7 +16,7 @@ class App {
     this.server = express();
     this.middlewares();
     this.routes();
-    createConnection();
+    this.database();
   }
 
   private middlewares(): void {
@@ -24,6 +26,14 @@ class App {
 
   private routes(): void {
     this.server.use(routes);
+  }
+
+  private async database() {
+    try {
+      await createConnection()
+    } catch (err) {
+      console.error(err);
+    }
   }
 }
 

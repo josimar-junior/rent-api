@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "test": "jest",
-    "lint": "eslint src/** __tests__/** --fix",
+    "test": "jest --detectOpenHandles",
+    "lint": "eslin t src/** __tests__/** --fix",
     "secure-mode": "jest --watch --verbose=true"
   },
   "keywords": [],
@@ -31,6 +31,7 @@
     "pg": "^8.5.1",
     "reflect-metadata": "^0.1.13",
     "tsyringe": "^4.4.0",
-    "typeorm": "^0.2.29"
+    "typeorm": "^0.2.29",
+    "yup": "^0.32.8"
   }
 }

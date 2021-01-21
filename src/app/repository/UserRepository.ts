@@ -2,7 +2,7 @@ import { getRepository, Repository } from 'typeorm';
 import User from "../entity/User";
 import IUserRepository from "./IUserRepository";
 
-class UserRepository implements IUserRepository {
+export default class UserRepository implements IUserRepository {
 
     private repository: Repository<User>;
 
@@ -17,5 +17,3 @@ class UserRepository implements IUserRepository {
         return await this.repository.save(user);
     }
 }
-
-export default UserRepository;

@@ -19,7 +19,7 @@ export default class UserService {
     public async save(user: User): Promise<User> {
         const schema = Yup.object().shape({
             name: Yup.string().required(),
-            email: Yup.string().required(),
+            email: Yup.string().email().required(),
             password: Yup.string().required()
         });
 

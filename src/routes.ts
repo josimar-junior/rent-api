@@ -10,5 +10,6 @@ routes.post('/users', UserController.save);
 
 routes.post('/accounts', AccountController.save);
 routes.get('/accounts', AccountController.findAll);
+routes.get('/accounts/:id', AccountController.findById);
 
 export default routes;

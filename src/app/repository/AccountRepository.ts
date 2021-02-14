@@ -18,4 +18,8 @@ export default class AccountRepository implements IAccountRepository {
         return await this.repository.find();
     }
 
+    public async findById(id: number): Promise<Account> {
+        return await this.repository.findOne(id);
+    }
+
 }

@@ -23,6 +23,13 @@ class AccountController {
         const accounts = await accountService.findAll();
         return res.status(200).json(accounts);
     }
+
+    public async findById(req: Request, res: Response): Promise<Account> {
+        const { id } = req.params;
+        const accountService = container.resolve(AccountService);
+        const account = await accountService.findById(id);
+        return res.status(200).json(account);
+    }
 }
 
 export default new AccountController();

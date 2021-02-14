@@ -27,4 +27,8 @@ export default class AccountService {
     public async findAll(): Promise<Account[]> {
         return await this.accountRepository.findAll();
     }
+
+    public async findById(id: number): Promise<Account> {
+        return await this.accountRepository.findById(id);
+    }
 }
